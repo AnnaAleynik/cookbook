@@ -82,7 +82,8 @@ CREATE TABLE public.users (
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    nickname character varying NOT NULL
 );
 
 
@@ -166,6 +167,13 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 
 
 --
+-- Name: index_users_on_nickname; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_nickname ON public.users USING btree (nickname);
+
+
+--
 -- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -180,6 +188,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210706143337'),
-('20210714075707');
+('20210714075707'),
+('20210810115835');
 
 
