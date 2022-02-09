@@ -1,0 +1,42 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - vendor/**/*
+    - spec/fixtures/**/*
+    - .git/**/*
+    - bin/**/*
+    - config/routes
+    - db/**/*
+    - node_modules/**/*
+    - tmp/**/*
+    - log/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+# Rails:
+#   Enabled: true
+
+Metrics/MethodLength:
+  Max: 24
+
+Metrics/AbcSize:
+  Max: 32
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    '%i': '()'
+    '%I': '()'
+    '%w': '()'
+    '%W': '()'
