@@ -9,7 +9,7 @@ blocks:
     task:
       env_vars:
         - name: DATABASE_URL
-          value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
+          value: 'postgresql://postgres:@0.0.0.0:5432/cookbook_test'
         - name: RAILS_ENV
           value: test
       jobs:
@@ -21,26 +21,6 @@ blocks:
             - bundle install --deployment --path vendor/bundle
             - cache store
             - bin/quality
-            - sem-service start postgres 11
-            - sem-version ruby 2.7.1
-            - bin/rails db:setup
-            - bin/rspec
-    dependencies: []
-  - name: Quality
-    dependencies:
-      - Setup
-    task:
-      jobs:
-        - name: Check code quality
-          commands:
-            - bin/quality
-  - name: Spec
-    dependencies:
-      - Setup
-    task:
-      jobs:
-        - name: Run tests
-          commands:
             - sem-service start postgres 11
             - sem-version ruby 2.7.1
             - bin/rails db:setup
