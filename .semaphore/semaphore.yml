@@ -5,13 +5,8 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: Setup
+  - name: Spec
     task:
-      env_vars:
-        - name: DATABASE_URL
-          value: 'postgresql://postgres:@0.0.0.0:5432/cookbook_test'
-        - name: RAILS_ENV
-          value: test
       jobs:
         - name: Setup
           commands:
