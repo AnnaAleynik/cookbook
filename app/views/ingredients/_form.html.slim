@@ -1,0 +1,11 @@
+/ frozen_string_literal: true
+= simple_form_for :ingredient do |f|
+  .control-group
+    h3 Ingredient
+    .form-group
+      = f.label :title, label: "Title", class: "control-label"
+      = f.input :title, autofocus: true
+
+  .form-actions
+    = f.submit nil, class: "btn btn-primary"
+    = link_to "Cancel", recipes_path, class: "btn"

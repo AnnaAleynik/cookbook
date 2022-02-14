@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  get "/recipes", to: "recipes#index"
+
+  resources :recipes
+  resources :ingredients, only: %i(index new create edit update)
 end

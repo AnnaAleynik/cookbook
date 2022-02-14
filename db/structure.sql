@@ -26,6 +26,35 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: ingredients; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ingredients (
+    id bigint NOT NULL,
+    title character varying NOT NULL
+);
+
+
+--
+-- Name: ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ingredients_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ingredients_id_seq OWNED BY public.ingredients.id;
+
+
+--
 -- Name: recipes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -59,6 +88,39 @@ ALTER SEQUENCE public.recipes_id_seq OWNED BY public.recipes.id;
 
 
 --
+-- Name: recipes_ingredients; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.recipes_ingredients (
+    id bigint NOT NULL,
+    recipe_id bigint,
+    ingredient_id bigint,
+    count character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: recipes_ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.recipes_ingredients_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: recipes_ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.recipes_ingredients_id_seq OWNED BY public.recipes_ingredients.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -83,7 +145,8 @@ CREATE TABLE public.users (
     confirmation_sent_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    nickname character varying NOT NULL
+    nickname character varying NOT NULL,
+    role character varying DEFAULT 'common'::character varying NOT NULL
 );
 
 
@@ -107,10 +170,24 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: ingredients id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ingredients ALTER COLUMN id SET DEFAULT nextval('public.ingredients_id_seq'::regclass);
+
+
+--
 -- Name: recipes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.recipes ALTER COLUMN id SET DEFAULT nextval('public.recipes_id_seq'::regclass);
+
+
+--
+-- Name: recipes_ingredients id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes_ingredients ALTER COLUMN id SET DEFAULT nextval('public.recipes_ingredients_id_seq'::regclass);
 
 
 --
@@ -126,6 +203,22 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: ingredients ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ingredients
+    ADD CONSTRAINT ingredients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_ingredients recipes_ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes_ingredients
+    ADD CONSTRAINT recipes_ingredients_pkey PRIMARY KEY (id);
 
 
 --
@@ -150,6 +243,27 @@ ALTER TABLE ONLY public.schema_migrations
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_ingredients_on_title; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_ingredients_on_title ON public.ingredients USING btree (title);
+
+
+--
+-- Name: index_recipes_ingredients_on_ingredient_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recipes_ingredients_on_ingredient_id ON public.recipes_ingredients USING btree (ingredient_id);
+
+
+--
+-- Name: index_recipes_ingredients_on_recipe_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recipes_ingredients_on_recipe_id ON public.recipes_ingredients USING btree (recipe_id);
 
 
 --
@@ -181,6 +295,22 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: recipes_ingredients fk_rails_7e41dbf7e7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes_ingredients
+    ADD CONSTRAINT fk_rails_7e41dbf7e7 FOREIGN KEY (recipe_id) REFERENCES public.recipes(id);
+
+
+--
+-- Name: recipes_ingredients fk_rails_a5c67c23f6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes_ingredients
+    ADD CONSTRAINT fk_rails_a5c67c23f6 FOREIGN KEY (ingredient_id) REFERENCES public.ingredients(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -189,6 +319,9 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210706143337'),
 ('20210714075707'),
-('20210810115835');
+('20210810115835'),
+('20210818153834'),
+('20211119103549'),
+('20211206090928');
 
 

@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class IngredientsController < ApplicationController
   def index
   end
 
@@ -12,8 +12,5 @@ class RecipesController < ApplicationController
   end
 
   def update
-  end
-
-  def destroy
   end
 end
