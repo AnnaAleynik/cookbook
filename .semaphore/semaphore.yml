@@ -1,36 +1,32 @@
 version: v1.0
 name: Test MyApp
+
+global_job_config:
+  env_vars:
+    - name: RAILS_ENV
+      value: test
+    - name: RACK_ENV
+      value: test
+    - name: DATABASE_URL
+      value: "postgresql://postgres@localhost/test?encoding=utf8"
+
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: Setup
+  - name: Spec
     task:
-      env_vars:
-        - name: DATABASE_URL
-          value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
-        - name: RAILS_ENV
-          value: test
       jobs:
         - name: Setup
           commands:
             - checkout
-    dependencies: []
-  - name: Quality
-    dependencies:
-      - Setup
-    task:
-      jobs:
-        - name: Check code quality
-          commands:
-            - checkout
-  - name: Spec
-    dependencies:
-      - Setup
-    task:
-      jobs:
-        - name: Run tests
-          commands:
+            - cache restore
+            - yarn install
+            - bundle install --deployment --path vendor/bundle
+            - cache store
+            - bin/quality
             - sem-service start postgres 11
             - sem-version ruby 2.7.1
+            - bin/rails db:setup
+            - bin/rspec
