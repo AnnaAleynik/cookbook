@@ -18,6 +18,8 @@ gem 'enumerize'
 gem "slim-rails"
 gem 'simple_form'
 
+gem 'decent_exposure', '~> 3.0'
+
 group :development, :test do
   gem 'pry'
   gem 'rubocop'

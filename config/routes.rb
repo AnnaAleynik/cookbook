@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   }
 
   resources :recipes
-  resources :ingredients, only: %i(index new create edit update)
+  resources :ingredients
 end
