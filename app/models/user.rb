@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
-  AVAILABLE_ROLES = %w[admin manager common].freeze
+  AVAILABLE_ROLES = %w(admin manager common).freeze
 
   enumerize :role, in: AVAILABLE_ROLES, predicates: true, default: :common
 
