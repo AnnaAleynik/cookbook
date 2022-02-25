@@ -8,6 +8,23 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_pack_tag "application", "data-turbolinks-track": "reload"
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
+      / = link_to root_path, class: "navbar-brand" do
+      /   = image_tag "Icon-Small.png"
+      /   span CookBook
+
+      collapse.navbar-collapse#collapsibleNavbar
+        ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+            #navbardrop
+              = link_to "Рецепты", "#", class: "nav-link dropdown-toggle"
+              / .droppdown-menu
+              /   = link_to "Завтраки", "#", class: "dropdown-item"
+              /   = link_to "Обеды", "#", class: "dropdown-item"
+              /   = link_to "Ужины", "#", class: "dropdown-item"
+          li.nav-item 
+            = link_to "Статьи", "#", class: "nav-link"
+
     - if notice
       p.alert.alert-success
         = notice
