@@ -25,6 +25,14 @@ html
           li.nav-item 
             = link_to "Статьи", "#", class: "nav-link"
 
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          - if current_user
+            = link_to "Профиль", "#", class: "btn btn-outline-info ml-sm-1"
+            = link_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-sm-1"
+          - else
+            = link_to "Войти", new_user_session_path, class: "btn btn-outline-info ml-sm-1"
+
     - if notice
       p.alert.alert-success
         = notice
