@@ -19,6 +19,7 @@ gem "simple_form"
 gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
+gem "action_policy"
 
 group :development, :test do
   gem "pry"
