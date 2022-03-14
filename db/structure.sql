@@ -62,7 +62,8 @@ CREATE TABLE public.recipes (
     content text,
     status character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    author_id bigint
 );
 
 
@@ -265,6 +266,13 @@ CREATE INDEX index_recipes_ingredients_on_recipe_id ON public.recipes_ingredient
 
 
 --
+-- Name: index_recipes_on_author_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recipes_on_author_id ON public.recipes USING btree (author_id);
+
+
+--
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -290,6 +298,14 @@ CREATE INDEX index_users_on_nickname ON public.users USING btree (nickname);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: recipes fk_rails_08ee84afe6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes
+    ADD CONSTRAINT fk_rails_08ee84afe6 FOREIGN KEY (author_id) REFERENCES public.users(id);
 
 
 --
@@ -320,6 +336,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210810115835'),
 ('20210818153834'),
 ('20211119103549'),
-('20211206090928');
+('20211206090928'),
+('20220301080314');
 
 
