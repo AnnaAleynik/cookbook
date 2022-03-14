@@ -7,5 +7,6 @@ class UsersController < ApplicationController
     request.referrer
   end
 
-  def profile; end
+  def profile
+  end
 end

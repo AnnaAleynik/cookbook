@@ -10,7 +10,7 @@ module Users
         render :new
       end
     end
-    
+
     def edit
     end
 
