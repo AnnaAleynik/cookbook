@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   extend Enumerize
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -12,5 +11,5 @@ class User < ApplicationRecord
 
   enumerize :role, in: AVAILABLE_ROLES, predicates: true, default: :common
 
-  scope :admin, -> { where(status: "admin") }
+  scope :admin, -> { where(role: "admin") }
 end
