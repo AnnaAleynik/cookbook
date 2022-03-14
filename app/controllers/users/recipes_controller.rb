@@ -23,6 +23,7 @@ module Users
     end
 
     def destroy
+      recipe.destroy
     end
 
     private
