@@ -7,10 +7,11 @@
       .small
         | Автор рецепта
         =< link_to "#{recipe.author.nickname}", "#"
-      - if allowed_to?(:edit?, post, with: Users::PostPolicy)
+      - if allowed_to?(:edit?, recipe, with: Users::RecipePolicy)
         .small
-          = link_to "Редактировать", edit_users_post_path(post)
-          = >link_to "Удалить", users_post_path(post), method: :delete, data: { confirm: "Are you sure?" }
+          = link_to "Редактировать", edit_users_recipe_path(recipe)
+      - if allowed_to?(:destroy?, recipe, with: Users::RecipePolicy)
+          => link_to "Удалить", users_recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }
 
   .card
     .p.text-left
