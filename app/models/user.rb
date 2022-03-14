@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   extend Enumerize
-  
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,

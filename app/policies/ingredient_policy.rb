@@ -1,5 +1,5 @@
 class IngredientPolicy < ApplicationPolicy
-  def create
-    user.manager?
+  def create?
+    manager?
   end
 end

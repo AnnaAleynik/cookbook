@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
+gem "action_policy"
 gem "bootstrap-sass", "3.4.1"
 gem "devise"
 gem "jbuilder", "~> 2.7"
@@ -19,7 +20,6 @@ gem "simple_form"
 gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
-gem "action_policy"
 
 group :development, :test do
   gem "pry"
