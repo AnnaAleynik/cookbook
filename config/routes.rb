@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :ingredients
 
   namespace :users do
-    resources :recipes, only: %i(new create edit update destroy), module: :users
+    resources :recipes, only: %i(new create edit update destroy)
   end
 end
