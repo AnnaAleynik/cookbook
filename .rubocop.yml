@@ -15,6 +15,9 @@ AllCops:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 Layout/LineLength:
   Max: 120
 

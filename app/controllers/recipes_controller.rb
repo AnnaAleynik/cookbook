@@ -1,13 +1,9 @@
 class RecipesController < ApplicationController
-  def index; end
+  expose :recipe
 
-  def show; end
+  def index
+  end
 
-  def edit; end
-
-  def create; end
-
-  def update; end
-
-  def destroy; end
+  def show
+  end
 end

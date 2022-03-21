@@ -1,0 +1,18 @@
+.article.recipe-page.py-2
+  .header
+    .h2.post-title.text-center.text-md-left
+      = recipe.title
+    .hr.m-0.d-none.d-md-block
+    .recipe-author.d-flex.justify-content-between.py-2.text-right
+      .small
+        | Автор рецепта
+        =< link_to "#{recipe.author.nickname}", "#"
+      - if allowed_to?(:edit?, recipe, with: Users::RecipePolicy)
+        .small
+          = link_to "Редактировать", edit_users_recipe_path(recipe)
+      - if allowed_to?(:destroy?, recipe, with: Users::RecipePolicy)
+          => link_to "Удалить", users_recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }
+
+  .card
+    .p.text-left
+      = recipe.content

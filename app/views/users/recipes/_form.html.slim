@@ -1,0 +1,9 @@
+= simple_form_for [:users, recipe] do |f|
+  .form-group
+    = f.input :title, autofocus: true
+
+  .form-group
+    = f.input :content, as: :text
+
+  .form-actions
+    = f.submit class: "btn btn-primary"
