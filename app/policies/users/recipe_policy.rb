@@ -5,11 +5,11 @@ module Users
     end
 
     def update?
-      common_user? && record.author == user
+      common_user? && author?
     end
 
     def destroy?
-      common_user? && record.author == user
+      common_user? && author?
     end
   end
 end

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   extend Enumerize
+  AVAILABLE_ROLES = %w(admin manager common).freeze
 
   devise :database_authenticatable,
          :registerable,
@@ -7,7 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
-  AVAILABLE_ROLES = %w(admin manager common).freeze
+  has_many :recipes, foreign_key: :author_id
 
   enumerize :role, in: AVAILABLE_ROLES, predicates: true, default: :common
 
