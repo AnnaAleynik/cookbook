@@ -1,0 +1,16 @@
+.container
+  h1.post-title.text-center.text-md-left
+    = current_user.nickname
+  hr.m-0.d-none.d-md-block
+
+  .d-flex.align-items-center.py-2.text-right
+    = current_user.email
+
+  .div
+    = link_to "Избранное", "#", class: "btn btn-outline-secondary mt-md-2"
+  .div
+    = link_to "Добавить свой рецепт", new_users_recipe_path, class: "btn btn-outline-success  mt-md-2"
+  .div
+    = link_to "Мои рецепты", "#", class: "btn btn-outline-secondary mt-md-2"
+  .div
+    = link_to 'Редактировать профиль', edit_profile_path(current_user), class: "btn btn-outline-secondary mt-md-2"

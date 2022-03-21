@@ -1,0 +1,10 @@
+.container
+  = simple_form_for current_user, url: profile_path do |f|
+    .form-group
+      = f.input :email
+
+    .form-group
+      = f.input :nickname
+
+    .form-actions
+      = f.submit class: "btn btn-primary"

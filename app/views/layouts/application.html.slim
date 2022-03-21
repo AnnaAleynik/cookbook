@@ -25,6 +25,18 @@ html
           li.nav-item 
             = link_to "Статьи", "#", class: "nav-link"
 
+      ul.navbar-nav.ml-auto
+        - if user_signed_in?
+          li.nav-item
+            = button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-sm-1"
+          li.nav-item
+            = link_to "Профиль", profile_path, class: "btn btn-outline-info ml-sm-1"
+        - else
+          li.nav-item
+            = link_to "Войти", new_user_session_path, class: "btn btn-outline-info ml-sm-1"
+
+
+
     - if notice
       p.alert.alert-success
         = notice
