@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: "home#show"
   devise_for :users, controllers: { registrations: "users/registrations" }
-  resource :profile, only: %i[show edit update]
+
+  resource :profile, only: %i(show edit update)
 
   resources :recipes, only: %i(index show)
   resources :ingredients
