@@ -22,9 +22,12 @@ p.text-center.mt-1
       | меню дня
     
 
-.p.text-center.mt-1 А может быть Вы хотите добавить свой рецепт?
+- if user_signed_in?
+  .p.text-center.mt-1 А может быть Вы хотите добавить свой рецепт?
 
-.container
-  .row.justify-content-center
-    = link_to new_users_recipe_path, class: "btn btn-outline-info col-2 align-self-start mr-1 mb-2" do
-      | добавить  
+  .container
+    .row.justify-content-center
+      = link_to new_users_recipe_path, class: "btn btn-outline-info col-2 align-self-start mr-1 mb-2" do
+        | добавить
+- else
+  .p.text-center.mt-1 Войдите, чтобы добавить рецепт
