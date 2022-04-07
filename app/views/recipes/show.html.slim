@@ -6,7 +6,7 @@
     .recipe-author.d-flex.justify-content-between.py-2.text-right
       .small
         | Автор рецепта
-        =< link_to "#{recipe.author.nickname}", "#"
+        =< link_to "#{recipe.author.login}", "#"
       - if allowed_to?(:edit?, recipe, with: Users::RecipePolicy)
         .small
           = link_to "Редактировать", edit_users_recipe_path(recipe)

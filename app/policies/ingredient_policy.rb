@@ -1,5 +1,5 @@
 class IngredientPolicy < ApplicationPolicy
   def create?
-    manager?
+    coordinator?
   end
 end

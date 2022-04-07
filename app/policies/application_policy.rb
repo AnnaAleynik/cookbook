@@ -13,6 +13,14 @@ class ApplicationPolicy < ActionPolicy::Base
     user&.common?
   end
 
+  def moderator
+    user&.moderator?
+  end
+
+  def coordinator
+    user&.coordinator?
+  end
+
   def author?
     record.author == user
   end
