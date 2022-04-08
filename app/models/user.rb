@@ -2,7 +2,7 @@ class User < ApplicationRecord
   extend Enumerize
 
   ADMIN_ROLES = %w(manager moderator coordinator).freeze
-  AVAILABLE_ROLES = [ADMIN_ROLES, "common"].flatten.freeze
+  AVAILABLE_ROLES = ADMIN_ROLES
 
   devise :database_authenticatable,
          :registerable,
