@@ -11,6 +11,8 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
+SET default_table_access_method = heap;
+
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
@@ -369,3 +371,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220301080314'),
 ('20220404143642'),
 ('20220404144303');
+
+
