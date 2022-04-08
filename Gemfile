@@ -22,8 +22,10 @@ gem "slim-rails"
 gem "decent_exposure", "~> 3.0"
 
 group :development, :test do
+  gem "factory_bot_rails"
   gem "pry"
-  gem "rubocop"
+  gem "rspec-rails", "~> 5.0.0"
+  gem "rubocop", require: false
   gem "rubocop-rails"
   gem "rubocop-rspec"
 end
