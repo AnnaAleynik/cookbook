@@ -276,7 +276,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   decent_exposure (~> 3.0)
   devise
-  devise_invitable (~> 2.0.0)
+  devise_invitable
   enumerize
   jbuilder (~> 2.7)
   listen (~> 3.2)
