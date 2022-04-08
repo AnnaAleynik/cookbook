@@ -136,6 +136,9 @@ CREATE TABLE public.users (
     id bigint NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    login character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
@@ -144,8 +147,15 @@ CREATE TABLE public.users (
     confirmation_sent_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    nickname character varying NOT NULL,
-    role character varying DEFAULT 'common'::character varying NOT NULL
+    invitation_token character varying,
+    invitation_created_at timestamp without time zone,
+    invitation_sent_at timestamp without time zone,
+    invitation_accepted_at timestamp without time zone,
+    invitation_limit integer,
+    invited_by_id bigint,
+    users_id bigint,
+    invitations_count integer DEFAULT 0,
+    roles character varying[] DEFAULT '{}'::character varying[]
 );
 
 
@@ -287,10 +297,24 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 
 
 --
--- Name: index_users_on_nickname; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_invitation_token; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_users_on_nickname ON public.users USING btree (nickname);
+CREATE UNIQUE INDEX index_users_on_invitation_token ON public.users USING btree (invitation_token);
+
+
+--
+-- Name: index_users_on_invited_by_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_invited_by_id ON public.users USING btree (invited_by_id);
+
+
+--
+-- Name: index_users_on_login; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_login ON public.users USING btree (login);
 
 
 --
@@ -298,6 +322,13 @@ CREATE INDEX index_users_on_nickname ON public.users USING btree (nickname);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_users_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_users_id ON public.users USING btree (users_id);
 
 
 --
@@ -333,10 +364,8 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210706143337'),
 ('20210714075707'),
-('20210810115835'),
 ('20210818153834'),
-('20211119103549'),
 ('20211206090928'),
-('20220301080314');
-
-
+('20220301080314'),
+('20220404143642'),
+('20220404144303');

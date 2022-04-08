@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  enumerize:
+    user:
+      roles:
+        manager: "Manager"
+        moderator: "Moderator"
+        coordinator: "Coordinator"

@@ -92,6 +92,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.6)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.10.0)
@@ -273,6 +276,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   decent_exposure (~> 3.0)
   devise
+  devise_invitable
   enumerize
   jbuilder (~> 2.7)
   listen (~> 3.2)

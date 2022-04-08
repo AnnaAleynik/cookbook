@@ -20,6 +20,7 @@ gem "simple_form"
 gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
+gem "devise_invitable"
 
 group :development, :test do
   gem "pry"
