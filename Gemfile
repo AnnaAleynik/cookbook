@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "2.7.5"
 
 gem "action_policy"
 gem "bootstrap-sass", "3.4.1"
@@ -23,8 +23,11 @@ gem "decent_exposure", "~> 3.0"
 gem "devise_invitable"
 
 group :development, :test do
+  gem "factory_bot_rails"
+  gem "faker"
   gem "pry"
-  gem "rubocop"
+  gem "rspec-rails", "~> 5.0.0"
+  gem "rubocop", require: false
   gem "rubocop-rails"
   gem "rubocop-rspec"
 end
