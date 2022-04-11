@@ -9,7 +9,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable,
-         :invitable
+         :invitable,
+         :confirmable
 
   has_many :recipes, foreign_key: :author_id
 
