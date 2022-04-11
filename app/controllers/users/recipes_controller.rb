@@ -2,9 +2,13 @@ module Users
   class RecipesController < BaseController
     expose :recipe
 
+    def new
+    end
+
     def create
       recipe.author = current_user
       if recipe.save
+        
         redirect_to recipe_path(recipe)
       else
         render :new
@@ -27,6 +31,10 @@ module Users
     end
 
     private
+
+    def authorize_resource!
+      authorize! recipe
+    end
 
     def recipe_params
       params.require(:recipe).permit(:title, :content)
