@@ -1,16 +1,22 @@
 class User < ApplicationRecord
   extend Enumerize
-  AVAILABLE_ROLES = %w(admin manager common).freeze
+
+  ADMIN_ROLES = %w(manager moderator coordinator).freeze
+  AVAILABLE_ROLES = ADMIN_ROLES
 
   devise :database_authenticatable,
          :registerable,
          :recoverable,
          :rememberable,
-         :validatable
+         :validatable,
+         :invitable
 
   has_many :recipes, foreign_key: :author_id
 
-  enumerize :role, in: AVAILABLE_ROLES, predicates: true, default: :common
+  enumerize :roles, in: AVAILABLE_ROLES, multiple: true, predicates: true
 
-  scope :admin, -> { where(role: "admin") }
+  validates :email, :login, presence: true
+  validates :email, uniqueness: true
+
+  scope :admin, -> { where("roles && ARRAY[?]::varchar[]", ADMIN_ROLES) }
 end

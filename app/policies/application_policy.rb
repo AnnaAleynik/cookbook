@@ -9,8 +9,12 @@ class ApplicationPolicy < ActionPolicy::Base
     user&.manager?
   end
 
-  def common_user?
-    user&.common?
+  def moderator
+    user&.moderator?
+  end
+
+  def coordinator
+    user&.coordinator?
   end
 
   def author?
