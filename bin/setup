@@ -27,6 +27,8 @@ FileUtils.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
+  system! 'dropdb --if-exists cookbook_dev'
+  system! 'dropdb --if-exists cookbook_test'
   system! 'bin/rails db:prepare'
 
   puts "\n== Removing old logs and tempfiles =="

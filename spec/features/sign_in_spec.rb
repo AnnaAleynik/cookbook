@@ -10,5 +10,9 @@ RSpec.feature "Sign In" do
     fill_in "Password", with: "password"
 
     click_button "Log in"
+
+    visit profile_path
+
+    expect(page).to have_content "first.user@test.com"
   end
 end
