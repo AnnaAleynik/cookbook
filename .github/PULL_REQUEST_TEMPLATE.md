@@ -1,5 +1,5 @@
 ### References
-* [Pivotal Tracker ###](https://www.pivotaltracker.com/story/show/###)
+* [PivotalTracker ###](https://www.pivotaltracker.com/story/show/###)
 
 ### Summary
 
