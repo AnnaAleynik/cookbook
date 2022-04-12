@@ -4,5 +4,5 @@ FactoryBot.define do
     title { Faker::Food.dish }
     content { Faker::Food.description }
   end
-  # dessert 
+  # dessert
 end

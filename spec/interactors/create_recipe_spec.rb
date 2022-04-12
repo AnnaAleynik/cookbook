@@ -21,9 +21,20 @@ RSpec.describe CreateRecipe do
       }
     end
 
-    context "send email notification" do
-      include :stubbed_interactor
+    context "when context succeeds" do
+      include_context :stubbed_organizer
 
+      it "sends email notification" do
+        # TODO: with jobs
+      end
+    end
+
+    context "when context failures" do
+      include_context :stubbed_organizer, failure: true
+
+      it "doesn't send email notification" do
+        # TODO: with jobs
+      end
     end
   end
 end

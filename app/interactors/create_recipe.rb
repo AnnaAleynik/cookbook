@@ -14,7 +14,7 @@ class CreateRecipe
 
   def schedule_notification
     RecipeMailer
-      .with(user: author, recipe: recipe)
+      .with(user: recipe_author, recipe: recipe)
       .recipe_published_email
       .deliver_later
   end
