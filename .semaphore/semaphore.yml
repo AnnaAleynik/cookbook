@@ -9,23 +9,36 @@ global_job_config:
       value: test
     - name: DATABASE_URL
       value: "postgresql://postgres@localhost/test?encoding=utf8"
+  prologue:
+    commands:
+      - checkout
+      - cache restore
+      - yarn install
+      - bundle install --deployment --path vendor/bundle
 
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
+
 blocks:
-  - name: Spec
+  - name: Setup
     task:
       jobs:
         - name: Setup
           commands:
-            - checkout
-            - cache restore
-            - yarn install
-            - bundle install --deployment --path vendor/bundle
             - cache store
+  - name: Check Quality
+    task:
+      jobs:
+        - name: Quality
+          commands:
             - bin/quality
+  - name: Specs
+    task:
+      jobs:
+        - name: Run Specs
+          commands: 
             - sem-service start postgres 11
             - sem-version ruby 2.7.1
             - bin/rails db:setup
