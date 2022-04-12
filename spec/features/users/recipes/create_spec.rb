@@ -2,9 +2,6 @@ require "rails_helper"
 
 RSpec.feature "Create recipe" do
   include_context :user_signed_in
-  # let!(:user) { create :user, email: "first.user@test.com" }
-
-  # context "when "
 
   scenario "successfully creating recipe" do
     visit new_users_recipe_path
@@ -15,6 +12,5 @@ RSpec.feature "Create recipe" do
     click_button "Create Recipe"
 
     expect(page).to have_content "First Recipe"
-    # expect(page).to have_content ""
   end
 end
