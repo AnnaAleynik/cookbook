@@ -28,10 +28,10 @@ blocks:
         - name: Setup
           commands:
             - cache store
-  - name: Check Quality
+  - name: Quality
     task:
       jobs:
-        - name: Quality
+        - name: Check Quality
           commands:
             - bin/quality
   - name: Specs
