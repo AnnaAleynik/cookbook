@@ -42,6 +42,7 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
+  gem "database_cleaner-active_record"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
