@@ -6,7 +6,6 @@ module Users
     end
 
     def create
-      # recipe.author = current_user
       if create_recipe.success?
         redirect_to recipe_path(recipe)
       else

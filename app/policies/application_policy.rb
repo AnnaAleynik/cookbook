@@ -3,10 +3,6 @@ class ApplicationPolicy < ActionPolicy::Base
 
   alias_rule :edit?, :destroy?, to: :update?
 
-  # def new?
-  #   false
-  # end
-
   def create?
     false
   end

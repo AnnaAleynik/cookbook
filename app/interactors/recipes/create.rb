@@ -4,7 +4,6 @@ module Recipes
     delegate :recipe_params, :author, :recipe, to: :context
 
     def call
-      # binding.pry
       recipe.author = author
       context.fail!(error: recipe_errors) unless recipe.save!
     end
