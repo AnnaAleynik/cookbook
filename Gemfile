@@ -21,6 +21,7 @@ gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
 gem "devise_invitable"
+gem "interactor", "~> 3.0"
 
 group :development, :test do
   gem "factory_bot_rails"

@@ -4,16 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hello, <%= @user.first_name %></h1>
+    <h1>Hello, <%= @user.login %></h1>
     <p>
-      Your recipe have been successfully published:
+      Your recipe <%= link_to @recipe.title, recipe_path(@recipe) %> have been successfully published!
     </p>
-    <h3>
-      <%= @recipe.title %>
-    </h3>
-    <p>
-      <%= @recipe.content %>
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Thanks for sharing and have a great day!</p>
   </body>
 </html>

@@ -112,6 +112,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -305,6 +306,7 @@ DEPENDENCIES
   enumerize
   factory_bot_rails
   faker
+  interactor (~> 3.0)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)

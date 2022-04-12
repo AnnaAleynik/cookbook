@@ -6,9 +6,8 @@ module Users
     end
 
     def create
-      recipe.author = current_user
-      if recipe.save
-        
+      # recipe.author = current_user
+      if create_recipe.success?
         redirect_to recipe_path(recipe)
       else
         render :new
@@ -31,6 +30,10 @@ module Users
     end
 
     private
+
+    def create_recipe
+      @create_recipe ||= ::CreateRecipe.call!(recipe: recipe, recipe_params: recipe_params, author: current_user)
+    end
 
     def authorize_resource!
       authorize! recipe

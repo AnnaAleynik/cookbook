@@ -1,8 +1,6 @@
-Welcome to example.com, <%= @user.first_name %>
+Hello, <%= @user.login %>
 ===============================================
 
-You have successfully signed up to example.com,
-your username is: <%= @user.login %>.
+Your recipe <%= link_to @recipe.title, recipe_path(@recipe) %> have been successfully published!
 
-
-Thanks for joining and have a great day!
+Thanks for sharing and have a great day!
