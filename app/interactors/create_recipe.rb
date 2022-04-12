@@ -1,10 +1,10 @@
 class CreateRecipe
   include Interactor::Organizer
 
-  # binding.pry
   organize Recipes::Create
 
-  delegate :recipe, :author, to: :context
+  delegate :recipe, to: :context
+  delegate :author, to: :recipe, prefix: true
 
   after do
     schedule_notification
