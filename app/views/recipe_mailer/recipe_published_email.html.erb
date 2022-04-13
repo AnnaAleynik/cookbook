@@ -6,7 +6,7 @@
   <body>
     <h1>Hello, <%= @user.login %></h1>
     <p>
-      Your recipe <%= link_to @recipe.title, recipe_path(@recipe) %> have been successfully published!
+      Your recipe <%= link_to @recipe.title, recipe_url(@recipe) %> have been successfully published!
     </p>
     <p>Thanks for sharing and have a great day!</p>
   </body>
