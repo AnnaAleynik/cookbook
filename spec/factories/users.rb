@@ -10,5 +10,12 @@ FactoryBot.define do
     #   email "manager@cookbook.com"
     #   roles ["manager"]
     # end
+
+    factory :user_john_smith do
+      first_name { "John" }
+      last_name { "Smith" }
+      login { "john.smith" }
+      email { "john.smith@example.com" }
+    end
   end
 end

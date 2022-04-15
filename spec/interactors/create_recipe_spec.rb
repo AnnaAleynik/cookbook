@@ -25,7 +25,8 @@ RSpec.describe CreateRecipe do
       include_context :stubbed_organizer
 
       it "sends email notification" do
-        # TODO: with jobs
+        interactor.run
+        expect(RecipePublishedJob).to have_been_enqueued
       end
     end
 
@@ -33,7 +34,8 @@ RSpec.describe CreateRecipe do
       include_context :stubbed_organizer, failure: true
 
       it "doesn't send email notification" do
-        # TODO: with jobs
+        interactor.run
+        expect(RecipePublishedJob).not_to have_been_enqueued
       end
     end
   end
