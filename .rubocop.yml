@@ -21,17 +21,22 @@ Style/EmptyMethod:
 Layout/LineLength:
   Max: 120
 
-Style/Documentation:
-  Enabled: false
-
 # Rails:
 #   Enabled: true
+
+Metrics/AbcSize:
+  Max: 32
+
+Metrics/BlockLength:
+  Max: 256
+  Exclude:
+    - spec/**/*
 
 Metrics/MethodLength:
   Max: 24
 
-Metrics/AbcSize:
-  Max: 32
+Style/Documentation:
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

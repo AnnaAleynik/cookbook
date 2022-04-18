@@ -21,6 +21,7 @@ gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
 gem "devise_invitable"
+gem "interactor", "~> 3.0"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -33,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   gem "listen", "~> 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
