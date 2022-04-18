@@ -31,7 +31,7 @@ module Users
     private
 
     def create_recipe
-      @create_recipe ||= ::CreateRecipe.call!(recipe: recipe)
+      ::CreateRecipe.call!(recipe: recipe)
     end
 
     def authorize_resource!
