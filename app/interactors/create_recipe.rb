@@ -4,7 +4,6 @@ class CreateRecipe
   organize Recipes::Create
 
   delegate :recipe, to: :context
-  delegate :author, to: :recipe, prefix: true
 
   after do
     schedule_notification
@@ -14,7 +13,7 @@ class CreateRecipe
 
   def schedule_notification
     RecipeMailer
-      .with(user: recipe_author, recipe: recipe)
+      .with(recipe: recipe)
       .recipe_published_email
       .deliver_later
   end

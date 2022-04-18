@@ -31,7 +31,7 @@ module Users
     private
 
     def create_recipe
-      @create_recipe ||= ::CreateRecipe.call!(recipe: recipe, recipe_params: recipe_params, author: current_user)
+      @create_recipe ||= ::CreateRecipe.call!(recipe: recipe)
     end
 
     def authorize_resource!
@@ -39,7 +39,7 @@ module Users
     end
 
     def recipe_params
-      params.require(:recipe).permit(:title, :content)
+      params.require(:recipe).permit(:title, :content).merge(author: current_user)
     end
   end
 end

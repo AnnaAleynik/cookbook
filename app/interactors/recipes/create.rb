@@ -1,10 +1,9 @@
 module Recipes
   class Create
     include Interactor
-    delegate :author, :recipe, to: :context
+    delegate :recipe, to: :context
 
     def call
-      recipe.author = author
       context.fail!(error: recipe_errors) unless recipe.save
     end
 
