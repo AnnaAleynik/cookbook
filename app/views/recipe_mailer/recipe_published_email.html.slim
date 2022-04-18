@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+  body
+    h1 
+      = "Hello, #{@user.login}"
+    p
+      | Your recipe 
+      => link_to @recipe.title, recipe_url(@recipe)
+      ' has been successfully published!
+    p Thanks for sharing and have a great day!
