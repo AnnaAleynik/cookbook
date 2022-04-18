@@ -13,9 +13,8 @@ class CreateRecipe
 
   def schedule_notification
     # RecipePublishedJob.perform_later(recipe.id)
-    # RecipeMailer
-    #   .with(recipe: recipe)
-    #   .recipe_published_email
-    #   .deliver_later
+    RecipeMailer
+      .recipe_published_email(recipe)
+      .deliver_later
   end
 end

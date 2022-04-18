@@ -6,19 +6,12 @@ RSpec.describe Recipes::Create do
 
     let(:initial_context) do
       {
-        recipe: recipe,
-        author: user
+        recipe: recipe
       }
     end
 
     let(:user) { create :user }
-    let(:recipe) { build :recipe, recipe_params }
-    let(:recipe_params) do
-      {
-        title: title,
-        content: "Content"
-      }
-    end
+    let(:recipe) { build :recipe, title: title, content: "Content", author: user }
 
     context "when valid params" do
       let(:title) { "Cream Soup" }
@@ -29,8 +22,7 @@ RSpec.describe Recipes::Create do
 
         recipe.reload
 
-        expect(recipe.title).to eq("Cream Soup")
-        expect(recipe.content).to eq("Content")
+        expect(recipe).to have_attributes(title: "Cream Soup", content: "Content", author: user)
       end
     end
 

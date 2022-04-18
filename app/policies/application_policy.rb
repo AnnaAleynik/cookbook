@@ -17,11 +17,11 @@ class ApplicationPolicy < ActionPolicy::Base
     user&.manager?
   end
 
-  def moderator
+  def moderator?
     user&.moderator?
   end
 
-  def coordinator
+  def coordinator?
     user&.coordinator?
   end
 
