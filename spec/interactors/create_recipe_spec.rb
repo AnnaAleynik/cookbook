@@ -13,6 +13,16 @@ RSpec.describe CreateRecipe do
     it { is_expected.to eq(expected_interactors) }
   end
 
+  describe ".call" do
+    include_context :interactor
+    let(:initial_context) { { recipe: recipe } }
+    let(:recipe) { build :recipe }
+
+    it "creates recipe" do
+      expect { interactor.run }.to change(Recipe, :count).by(1)
+    end
+  end
+
   describe ".after" do
     let!(:recipe) { create :recipe }
     let(:organizer_context) do

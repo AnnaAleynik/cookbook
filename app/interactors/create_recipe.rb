@@ -12,8 +12,6 @@ class CreateRecipe
   private
 
   def schedule_notification
-    RecipeMailer
-      .recipe_published_email(recipe)
-      .deliver_later
+    RecipeMailer.recipe_published_email(recipe).deliver_later
   end
 end

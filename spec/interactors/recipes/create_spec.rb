@@ -31,7 +31,7 @@ RSpec.describe Recipes::Create do
       let(:error) { "Title is too short (minimum is 3 characters)" }
 
       it "raise failure" do
-        interactor.run
+        expect { interactor.run }.not_to change(Recipe, :count)
 
         expect(context).to be_failure
         expect(context.error).to eq(error)
