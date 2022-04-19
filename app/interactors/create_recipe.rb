@@ -12,7 +12,6 @@ class CreateRecipe
   private
 
   def schedule_notification
-    
     RecipePublishedJob.perform_later(recipe.id)
   end
 end
