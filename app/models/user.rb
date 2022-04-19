@@ -19,4 +19,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   scope :admin, -> { where("roles && ARRAY[?]::varchar[]", ADMIN_ROLES) }
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end

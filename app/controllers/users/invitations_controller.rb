@@ -5,6 +5,13 @@ module Users
 
     def create
       # Users::
+      # InviteUserJob.perform
+
+      if @user.errors.empty?
+        binding.pry
+      else
+        render :new
+      end
     end
 
     protected
@@ -13,11 +20,12 @@ module Users
       devise_parameter_sanitizer.permit(:invite, keys: %w(first_name last_name login roles))
     end
 
-    # def authorize_user
-    #   authorize! current_user, to: :admin?
-    # end
     def authorize_resource!
       authorize! current_user, with: InvitationPolicy
     end
+
+    # def invite_resource
+    #   binding.pry
+    # end
   end
 end
