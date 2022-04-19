@@ -1,7 +1,15 @@
 class ApplicationPolicy < ActionPolicy::Base
   authorize :user, allow_nil: true
 
-  alias_rule :edit?, to: :update?
+  alias_rule :edit?, :destroy?, to: :update?
+
+  def create?
+    false
+  end
+
+  def update?
+    false
+  end
 
   private
 
@@ -9,11 +17,11 @@ class ApplicationPolicy < ActionPolicy::Base
     user&.manager?
   end
 
-  def moderator
+  def moderator?
     user&.moderator?
   end
 
-  def coordinator
+  def coordinator?
     user&.coordinator?
   end
 

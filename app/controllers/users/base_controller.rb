@@ -1,7 +1,5 @@
 module Users
   class BaseController < ApplicationController
-    before_action :authenticate_user!
-
-    verify_authorized
+    before_action :authenticate_user!, :authorize_resource!
   end
 end

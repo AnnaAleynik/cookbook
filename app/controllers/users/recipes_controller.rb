@@ -2,9 +2,11 @@ module Users
   class RecipesController < BaseController
     expose :recipe
 
+    def new
+    end
+
     def create
-      recipe.author = current_user
-      if recipe.save
+      if create_recipe.success?
         redirect_to recipe_path(recipe)
       else
         render :new
@@ -28,8 +30,16 @@ module Users
 
     private
 
+    def create_recipe
+      ::CreateRecipe.call!(recipe: recipe)
+    end
+
+    def authorize_resource!
+      authorize! recipe
+    end
+
     def recipe_params
-      params.require(:recipe).permit(:title, :content)
+      params.require(:recipe).permit(:title, :content).merge(author: current_user)
     end
   end
 end

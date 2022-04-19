@@ -12,7 +12,7 @@ gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.6"
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
-gem "webpacker", "~> 4.0"
+gem "webpacker", "~> 5.0"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "enumerize"
@@ -21,6 +21,7 @@ gem "slim-rails"
 
 gem "decent_exposure", "~> 3.0"
 gem "devise_invitable"
+gem "interactor", "~> 3.0"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -33,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   gem "listen", "~> 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -41,6 +43,7 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
+  gem "database_cleaner-active_record"
   gem "selenium-webdriver"
   gem "webdrivers"
 end

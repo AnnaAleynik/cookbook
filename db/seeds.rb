@@ -1,7 +1,7 @@
 admin_user_params = {
   first_name: "Anna",
   last_name: "Aleynik",
-  email: "anna.aleynik@flatsatck.com",
+  email: "anna.aleynik@flatstack.com",
   login: "anna.aleynik",
   password: "12345678",
   roles: ["manager", "coordinator", "moderator"]

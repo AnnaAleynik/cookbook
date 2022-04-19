@@ -1,11 +1,11 @@
 module Users
   class RecipePolicy < ApplicationPolicy
-    def update?
-      author? || moderator?
+    def create?
+      true
     end
 
-    def destroy?
-      author?
+    def update?
+      author? || moderator?
     end
   end
 end
