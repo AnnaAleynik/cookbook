@@ -15,8 +15,11 @@ class User < ApplicationRecord
 
   enumerize :roles, in: AVAILABLE_ROLES, multiple: true, predicates: true
 
-  validates :email, :login, presence: true
-  validates :email, uniqueness: true
+  validates :email, presence: true
+  validates :email, :login, uniqueness: true
+  validates :login, presence: true, unless: :invited_to_sign_up?
+
+  # login can be empty ONLY if invitation is sent & invitation_not_accepted
 
   scope :admin, -> { where("roles && ARRAY[?]::varchar[]", ADMIN_ROLES) }
 

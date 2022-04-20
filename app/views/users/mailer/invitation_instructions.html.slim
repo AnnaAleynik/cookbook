@@ -1,8 +1,8 @@
 p
-  = t("devise.mailer.invitation_instructions.hello", email: @resource.email)
+  = t("devise.mailer.invitation_instructions.hello", first_name: @resource.first_name, last_name: @resource.last_name)
 
 p
-  = t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
+  = t("devise.mailer.invitation_instructions.someone_invited_you", roles: @resource.roles.to_s)
 
 p
   = link_to t("devise.mailer.invitation_instructions.accept"),

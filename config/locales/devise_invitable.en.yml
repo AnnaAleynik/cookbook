@@ -10,16 +10,16 @@ en:
       no_invitations_remaining: "No invitations remaining"
       invitation_removed: "Your invitation was removed."
       new:
-        header: "Send invitation"
+        header: "Create a user"
         submit_button: "Send an invitation"
       edit:
         header: "Set your password"
-        submit_button: "Set my password"
+        submit_button: "Save"
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
+        subject: "Invitation to CookBook"
+        hello: "Hello, %{first_name} %{last_name}"
+        someone_invited_you: "You have been invited to CookBook as %{roles}, you can accept it through the link below."
         accept: "Accept invitation"
         accept_until: "This invitation will be due in %{due_date}."
         ignore: "If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password."
@@ -29,3 +29,34 @@ en:
         mailer:
           invitation_instructions:
             accept_until_format: "%B %d, %Y %I:%M %p"
+ru:
+  devise:
+    failure:
+      invited: "You have a pending invitation, accept it to finish creating your account."
+    invitations:
+      send_instructions: "Приглашение было отправлено на почту %{email}"
+      invitation_token_invalid: "Приглашение не действительно!"
+      updated: "Пароль успешно сохранён. Вы вошли в аккаунт."
+      updated_not_active: "Пароль успешно сохранён."
+      no_invitations_remaining: "Нет приглашений."
+      invitation_removed: "Приглашение удалено."
+      new:
+        header: "Создайте сотрудника"
+        submit_button: "Отправить приглашение"
+      edit:
+        header: "Установите пароль"
+        submit_button: "Сохранить"
+    mailer:
+      invitation_instructions:
+        subject: "Приглашение в Cookbook!"
+        hello: "Доброго времени суток, %{first_name} %{last_name}"
+        someone_invited_you: "Вы приглашены в CookBook как %{roles}, Вы можете принять приглашение, перейдя по ссылке снизу."
+        accept: "Принять пиглашение"
+        accept_until: "Приглашение действительно до %{due_date}."
+        ignore: "Если Вы не желаете принимать приглашение, проигнорируйте это письмо. Аккаунт не будет создан."
+  time:
+    formats:
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%d.%m:%Y %H:%M"
