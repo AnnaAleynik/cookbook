@@ -16,7 +16,7 @@ manager_user_params = {
   password: "12345678",
   roles: ["manager"]
 }
-User.create!(admin_user_params)
+User.create!(manager_user_params)
 
 account_user_params = {
   first_name: "John",

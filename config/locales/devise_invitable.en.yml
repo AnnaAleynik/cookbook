@@ -13,7 +13,7 @@ en:
         header: "Create a user"
         submit_button: "Send an invitation"
       edit:
-        header: "Set your password"
+        header: "Setup your profile"
         submit_button: "Save"
     mailer:
       invitation_instructions:
@@ -44,7 +44,7 @@ ru:
         header: "Создайте сотрудника"
         submit_button: "Отправить приглашение"
       edit:
-        header: "Установите пароль"
+        header: "Завершите создание профиля"
         submit_button: "Сохранить"
     mailer:
       invitation_instructions:
