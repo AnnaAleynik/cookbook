@@ -15,8 +15,21 @@ class User < ApplicationRecord
 
   enumerize :roles, in: AVAILABLE_ROLES, multiple: true, predicates: true
 
-  validates :email, :login, presence: true
-  validates :email, uniqueness: true
+  validates :email, presence: true
+  validates :email, :login, uniqueness: true
+  validates :login, presence: true, if: :accepted_or_not_invited?
 
   scope :admin, -> { where("roles && ARRAY[?]::varchar[]", ADMIN_ROLES) }
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def admin?
+    manager? || moderator? || coordinator?
+  end
+
+  def role
+    roles.join(", ")
+  end
 end

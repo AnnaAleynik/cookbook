@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "home#show"
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    invitations: "users/invitations"
+  }
 
   resource :profile, only: %i(show edit update)
 
