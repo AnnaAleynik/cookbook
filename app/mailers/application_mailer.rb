@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "anna.aleynik@flatstack.com"
+  default from: ENV["MAIL_SENDER"]
   layout "mailer"
 end

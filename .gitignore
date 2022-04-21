@@ -13,6 +13,8 @@ test/version_tmp
 tmp
 log
 
+.env
+
 /public/assets
 /public/packs
 /public/packs-test

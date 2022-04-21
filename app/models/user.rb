@@ -17,13 +17,19 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :email, :login, uniqueness: true
-  validates :login, presence: true, unless: :invited_to_sign_up?
-
-  # login can be empty ONLY if invitation is sent & invitation_not_accepted
+  validates :login, presence: true, if: :accepted_or_not_invited?
 
   scope :admin, -> { where("roles && ARRAY[?]::varchar[]", ADMIN_ROLES) }
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def admin?
+    manager? || moderator? || coordinator?
+  end
+
+  def role
+    roles.join(", ")
   end
 end
