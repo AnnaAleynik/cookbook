@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:12.1
+    expose:
+      - "5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db
+    depends_on:
+      - db
+      - redis
+    env_file: .env
+    command: bin/docker-entrypoint  
+  redis:
+    image: "redis:alpine"
+  sidekiq:
+    build: .
+    depends_on:
+      - app
+    command: sh -c 'bundle exec sidekiq'
+volumes:
+  db-data:
