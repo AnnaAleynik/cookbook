@@ -11,7 +11,7 @@ module Cookbook
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    config.active_record.schema_format = :sql
+    config.active_record.schema_format = :ruby
     config.generators do |g|
       g.template_engine :slim
     end
