@@ -25,6 +25,7 @@ gem "interactor", "~> 3.0"
 gem "sidekiq", "~> 6.4"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
   gem "pry"
