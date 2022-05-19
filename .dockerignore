@@ -12,7 +12,6 @@ test/tmp
 test/version_tmp
 tmp
 log
-.env
 
 /public/assets
 /public/packs

@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file: .env
+  redis:
+    image: "redis:alpine"
