@@ -101,6 +101,10 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.5.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.10.0)
@@ -320,6 +324,7 @@ DEPENDENCIES
   decent_exposure (~> 3.0)
   devise
   devise_invitable
+  dotenv-rails
   enumerize
   factory_bot_rails
   faker
