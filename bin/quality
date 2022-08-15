@@ -3,3 +3,5 @@
 set -e
 
 bin/rubocop
+bin/brakeman
+bin/bundle-audit check --update
