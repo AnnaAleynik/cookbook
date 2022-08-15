@@ -70,7 +70,11 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    brakeman (5.3.1)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -323,6 +327,8 @@ DEPENDENCIES
   action_policy
   bootsnap (>= 1.4.2)
   bootstrap-sass (= 3.4.1)
+  brakeman
+  bundler-audit
   capybara (>= 2.15)
   database_cleaner-active_record
   decent_exposure (~> 3.0)
